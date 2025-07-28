@@ -1,0 +1,9 @@
+{
+  "name": "elvisminecraftcollection #1",
+  "description": "This is my first NFT on the Ethereum blockchain, created by LeRoiElvi.",
+  "image": "ipfs://bafybeiggzqkqn3232klowebg6du7k77jhd7ykkb6n4rlbnrvwwgzv76gcm",
+  "attributes": [
+    { "trait_type": "Artist", "value": "LeRoiElvi" },
+    { "trait_type": "Series", "value": "TheFirstCollection" }
+  ]
+}
