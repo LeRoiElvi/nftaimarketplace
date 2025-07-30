@@ -1,9 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { DefaultSeo } from "next-seo";
 
-import theme from "@/theme/index";
-import Layout from "@/layouts/global";
-import SEO from "next-seo.config";
+import theme from "./src/theme/index";
+import Layout from "./src/layouts/global";
+import SEO from "./next-seo.config";
 
 import "@fontsource/poppins/latin-400.css";
 import "@fontsource/poppins/latin-500.css";

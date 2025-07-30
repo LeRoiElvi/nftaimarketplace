@@ -3,9 +3,9 @@ import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import remarkSlug from "remark-slug";
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
 
-import MDXComponents from "@/components/MDXComponents";
+import MDXComponents from "../components/MDXComponents";
 
 const root = process.cwd();
 
@@ -19,8 +19,7 @@ export async function getFileBySlug(type, slug) {
     : readFileSync(join(root, "src/data", `${type}.mdx`), "utf8");
 
   const { data, content } = matter(source);
-  const mdxSource = await renderToString(content, {
-    components: MDXComponents,
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkSlug, require("remark-code-titles")],
     },

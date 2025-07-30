@@ -1,4 +1,4 @@
-import { seo } from "config";
+import { seo } from "./src/config";
 
 export default {
   titleTemplate: `%s | ${seo.title}`,
