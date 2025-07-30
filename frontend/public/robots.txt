@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://portfolio-boilerplate-nextjs.vercel.app
-
-# Sitemaps
-Sitemap: https://portfolio-boilerplate-nextjs.vercel.app/sitemap.xml
