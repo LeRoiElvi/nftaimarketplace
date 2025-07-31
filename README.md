@@ -1,11 +1,6 @@
 # BoosterB NFT Marketplace 🎨
 
-A modern, Neutrl-inspired NFT marketplace showcasing AI-generated digital art on the Polygon Amoy testnet. Features a sleek dark theme with glass morphism design and seamless blockchain integration.
-
-![BoosterB NFT Marketplace](https://img.shields.io/badge/Next.js-15.4.5-black?style=for-the-badge&logo=next.js)
-![Polygon](https://img.shields.io/badge/Polygon-Amoy_Testnet-8247E5?style=for-the-badge&logo=polygon)
-![Ethereum](https://img.shields.io/badge/Ethereum-Smart_Contracts-3C3C3D?style=for-the-badge&logo=ethereum)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript)
+A modern  NFT marketplace showcasing AI-generated digital art on the Polygon Amoy testnet. Features a sleek dark theme with glass morphism design and seamless blockchain integration.
 
 ## ✨ Features
 
@@ -16,7 +11,6 @@ A modern, Neutrl-inspired NFT marketplace showcasing AI-generated digital art on
 - **Responsive Design** - Works perfectly on all devices
 
 ### 🎨 Design Highlights
-- **Neutrl-Inspired UI** - Modern, professional dark theme
 - **Glass Morphism** - Subtle transparency and backdrop blur effects
 - **Smooth Animations** - Engaging hover effects and transitions
 - **Modern Typography** - Clean, readable Geist Sans font family
@@ -160,7 +154,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Neutrl** - Design inspiration
 - **Polygon** - Layer 2 scaling solution
 - **OpenZeppelin** - Secure smart contract libraries
 - **Next.js Team** - Amazing React framework
