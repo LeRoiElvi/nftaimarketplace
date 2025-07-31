@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/mdx": "^15.4.5",
+    "ethers": "^6.15.0",
     "gray-matter": "^4.0.3",
     "next": "15.4.5",
     "next-mdx-remote": "^5.0.0",
@@ -21,7 +22,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
