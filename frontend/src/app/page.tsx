@@ -1,105 +1,93 @@
-import NFTDisplay from './components/NFTDisplay';
 import ShowcaseNFT from './components/ShowcaseNFT';
+import BlogList from './components/BlogList';
+import { getRecentBlogPosts } from './lib/blog';
 
-export default function Home() {
+export default async function Home() {
+  const recentPosts = await getRecentBlogPosts(3);
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen gray-gradient-dark">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600"></div>
-              <span className="text-white font-bold text-lg">BoosterB</span>
+              <img 
+                src="/bblogo.png" 
+                alt="LeRoiElvi Logo" 
+                className="w-8 h-8 rounded-lg object-cover"
+              />
+              <span className="text-white font-bold text-lg">BoosterB - ElvisB projects </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#featured" className="text-gray-300 hover:text-white transition-colors font-medium">Featured</a>
-              <a href="#nfts" className="text-gray-300 hover:text-white transition-colors font-medium">My NFTs</a>
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors font-medium">About</a>
-              <a href="#blog" className="text-gray-300 hover:text-white transition-colors font-medium">Blog</a>
+              <a href="#nfts" className="text-[var(--neutral-400)] hover:text-white transition-colors font-medium">My NFTs</a>
+              <a href="#about" className="text-[var(--neutral-400)] hover:text-white transition-colors font-medium">Let&apos;s Connect</a>
+              <a href="#blog" className="text-[var(--neutral-400)] hover:text-white transition-colors font-medium">My Story</a>
             </div>
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-              Connect Wallet
-            </button>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-6xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="gradient-text">The next generation</span><br />
-              <span className="text-white">of NFT experiences</span>
+              <span className="gradient-text">Hello there, I'm Elvis!</span><br />
+              <span className="text-white">Welcome to my website</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Discover and showcase AI-generated NFTs with exclusive blockchain access. 
-              Making digital art accessible for everyone.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
-              Explore Collection
-            </button>
-            <div className="flex items-center space-x-4 text-gray-400">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">LIVE ON AMOY TESTNET</span>
-              </div>
-            </div>
+                          <p className="text-xl text-[var(--neutral-300)] max-w-2xl mx-auto leading-relaxed">
+                Here you can learn more about me and my work.
+                Feel free to contact me !
+              </p>
           </div>
         </div>
       </section>
 
       <main className="max-w-7xl mx-auto px-6">
-        {/* Featured NFT Section */}
-        <section id="featured" className="mb-24">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6">
-              <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
-              <span className="text-gray-300 text-sm font-medium">FEATURED COLLECTION</span>
+
+        {/* Introduction Section */}
+        <section className="mb-16">
+          <div className="glass rounded-2xl p-8 md:p-12">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Welcome to My Digital Journey</h2>
+              <div className="text-lg text-[var(--neutral-300)] leading-relaxed space-y-6">
+                <p>
+                  Hi, I'm Elvis, I'm a marketing project manager for listed company leveraging blockchain technology in the video game industry, CBI. 
+                  Here on my website you can find my personal projects, my NFT collection, and my coding journey so far! 
+                </p>
+                <p>
+                  I heard about vibe coding earlier this year, and I was always interested in coding, so I decided to give it a try.
+                  in June 2025 I started my coding journey. I'm currently learning React, Next.js, and Tailwind CSS. 
+                  I'm also learning about Blockchain and smart contracts, and I'm currently working on several projects leveraging AI and blockchain technology.. 
+
+                </p>
+                <p>
+                  I'd love to hear from you, so feel free to contact me!                </p>
+              </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stable, Transferable, <span className="gradient-text">NFT-Generating</span></h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Showcasing our latest creation from the elvisminecraftcollection on Polygon Amoy testnet.
-            </p>
-          </div>
-          <div className="glass rounded-2xl p-8">
-            <ShowcaseNFT />
           </div>
         </section>
 
-        {/* My NFT Collection Section */}
-        <section id="nfts" className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Connect Your Wallet</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Connect your MetaMask wallet to view NFTs you own from the elvisminecraftcollection contract.
-            </p>
-          </div>
-          <div className="glass rounded-2xl p-8">
-            <NFTDisplay />
-          </div>
-        </section>
+
 
         {/* Features Section - Neutrl inspired */}
         <section className="mb-24">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Why <span className="gradient-text">BoosterB</span>?</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Market-leading NFT experiences, redefined. Our platform delivers premium digital art discovery by harnessing exclusive blockchain strategies.
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">My <span className="gradient-text">Projects</span></h2>
+            <p className="text-xl text-[var(--neutral-300)] max-w-2xl mx-auto">
+              Discover what I've been building in the pasts month. 
+              By leveraging AI and powerfull tools, it has never been easier to bring an idea to life. 
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="glass rounded-xl p-6 text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+              <div className="w-12 h-12 gray-gradient rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">AI-Powered Generation</h3>
-              <p className="text-gray-400">Advanced AI algorithms create unique, collectible digital art pieces.</p>
+              <h3 className="text-xl font-bold text-white mb-2">Vibe Code Journey</h3>
+              <p className="text-[var(--neutral-300)]">here you can find my entire coding journey,keep track of my improvements and advancent.</p>
             </div>
             <div className="glass rounded-xl p-6 text-center">
               <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
@@ -107,8 +95,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Secure Blockchain</h3>
-              <p className="text-gray-400">Built on Polygon for fast, secure, and environmentally friendly transactions.</p>
+              <h3 className="text-xl font-bold text-white mb-2">My NFT collections</h3>
+              <p className="text-[var(--neutral-300)]">In this section you can discover my NFTs and other blockchain stuff I've worked on.</p>
             </div>
             <div className="glass rounded-xl p-6 text-center">
               <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
@@ -117,68 +105,34 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Community Driven</h3>
-              <p className="text-gray-400">Join a vibrant community of collectors, artists, and NFT enthusiasts.</p>
+              <p className="text-[var(--neutral-300)]">Join a vibrant community of collectors, artists, and NFT enthusiasts.</p>
             </div>
           </div>
         </section>
 
-        {/* Updates Section - Neutrl style */}
-        <section id="blog" className="mb-24">
+
+                {/* My NFT Collection Section */}
+        <section id="nfts" className="mb-24">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Updates</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              What We're Seeing, Building, and Exploring. Ongoing improvements and new features, each release enhances your experience.
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">My <span className="gradient-text">NFTs</span></h2>
+            <p className="text-xl text-[var(--neutral-300)] max-w-2xl mx-auto">
+              Here the first Nft I've minted, inspired by one of my fav games ever Minecraft. I named it the elvisminecraftcollection... yes a litte lack if inspiration here...
+              I have deployed it on the Polygon Amoy testnet.
             </p>
           </div>
-          <div className="space-y-6">
-            <article className="glass rounded-xl p-8 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">The Future of AI-Generated NFTs</h3>
-                  <p className="text-indigo-400 text-sm font-medium">31 Jul 2025</p>
-                </div>
-              </div>
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                Exploring how artificial intelligence is revolutionizing the creation and ownership of digital art, making unique collectibles accessible to everyone.
-              </p>
-              <a href="#" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">Read more →</a>
-            </article>
-            
-            <article className="glass rounded-xl p-8 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Polygon Integration Success</h3>
-                  <p className="text-indigo-400 text-sm font-medium">28 Jul 2025</p>
-                </div>
-              </div>
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                Our seamless integration with Polygon Amoy testnet brings faster transactions and lower fees to the NFT ecosystem.
-              </p>
-              <a href="#" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">Read more →</a>
-            </article>
-            
-            <article className="glass rounded-xl p-8 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Community Spotlight: Early Adopters</h3>
-                  <p className="text-indigo-400 text-sm font-medium">25 Jul 2025</p>
-                </div>
-              </div>
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                Featuring amazing creators in our community and their incredible AI-generated NFT collections that are pushing boundaries.
-              </p>
-              <a href="#" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">Read more →</a>
-            </article>
+          <div className="glass rounded-2xl p-8">
+            <ShowcaseNFT />
           </div>
-          
-          <div className="text-center mt-12">
-            <a href="#" className="inline-flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
-              <span>Explore the updates</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section id="blog">
+          <BlogList 
+            posts={recentPosts}
+            limit={3}
+            title="Latest from My Blog"
+            subtitle="Discover my thoughts, experiences, and learnings from my coding journey"
+          />
         </section>
       </main>
 
@@ -190,13 +144,13 @@ export default function Home() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600"></div>
               <span className="text-white font-bold text-lg">BoosterB</span>
             </div>
-            <div className="flex items-center space-x-8 text-gray-400 text-sm">
+            <div className="flex items-center space-x-8 text-[var(--neutral-300)] text-sm">
               <a href="#" className="hover:text-white transition-colors">Documentation</a>
               <a href="#" className="hover:text-white transition-colors">Community</a>
               <a href="#" className="hover:text-white transition-colors">Support</a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+          <div className="mt-8 pt-8 border-t border-white/10 text-center text-[var(--neutral-300)] text-sm">
             <p>© 2025 BoosterB NFT Marketplace. All rights reserved.</p>
           </div>
         </div>

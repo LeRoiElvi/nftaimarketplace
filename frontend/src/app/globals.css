@@ -8,8 +8,14 @@
   --neutral-50: #fafafa;
   --neutral-100: #f5f5f5;
   --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a1a1a1;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
   --neutral-800: #262626;
   --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
 }
 
 @theme inline {
@@ -62,6 +68,30 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Gray gradient utilities */
+.gray-gradient {
+  background: linear-gradient(135deg, var(--neutral-700), var(--neutral-900));
+}
+
+.gray-gradient-light {
+  background: linear-gradient(135deg, var(--neutral-300), var(--neutral-600));
+}
+
+.gray-gradient-dark {
+  background: linear-gradient(135deg, var(--neutral-800), var(--neutral-950));
+}
+
+.gray-gradient-subtle {
+  background: linear-gradient(135deg, var(--neutral-800), var(--neutral-900));
+}
+
+/* Animated gray gradient */
+.animated-gray-gradient {
+  background: linear-gradient(-45deg, var(--neutral-600), var(--neutral-800), var(--neutral-700), var(--neutral-900));
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 /* Animated gradient background */

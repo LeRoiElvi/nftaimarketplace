@@ -242,7 +242,7 @@ export default function NFTDisplay() {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-white mb-3">Connect Your Wallet</h3>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">Connect your MetaMask wallet to view your NFTs from the Amoy Polygon testnet</p>
+          <p className="text-[var(--neutral-300)] mb-8 max-w-md mx-auto">Connect your MetaMask wallet to view your NFTs from the Amoy Polygon testnet</p>
         </div>
         <button
           onClick={connectWallet}
@@ -267,7 +267,7 @@ export default function NFTDisplay() {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-white mb-3">Wrong Network</h3>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">
+          <p className="text-[var(--neutral-300)] mb-8 max-w-md mx-auto">
             Please switch to <span className="font-semibold text-indigo-400">Polygon Amoy Testnet</span> to view your NFTs
           </p>
         </div>
@@ -288,7 +288,7 @@ export default function NFTDisplay() {
     return (
       <div className="flex flex-col justify-center items-center py-12">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mb-4"></div>
-        <p className="text-gray-400">Loading your NFTs from Amoy testnet...</p>
+        <p className="text-[var(--neutral-300)]">Loading your NFTs from Amoy testnet...</p>
       </div>
     );
   }
@@ -303,7 +303,7 @@ export default function NFTDisplay() {
             </svg>
           </div>
           <h3 className="text-xl font-bold text-white mb-2">Error Loading NFTs</h3>
-          <p className="text-gray-400 mb-6">{error}</p>
+          <p className="text-[var(--neutral-300)] mb-6">{error}</p>
         </div>
         <button 
           onClick={loadNFTs}
@@ -320,12 +320,12 @@ export default function NFTDisplay() {
       <div className="text-center py-12">
         <div className="mb-8">
           <div className="w-20 h-20 mx-auto mb-6 rounded-2xl glass flex items-center justify-center">
-            <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-10 h-10 text-[var(--neutral-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-white mb-3">No NFTs Found</h3>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">No NFTs found in your wallet on Amoy testnet</p>
+          <p className="text-[var(--neutral-300)] mb-8 max-w-md mx-auto">No NFTs found in your wallet on Amoy testnet</p>
         </div>
         <button 
           onClick={loadNFTs}
@@ -343,11 +343,11 @@ export default function NFTDisplay() {
       <div className="glass rounded-xl p-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-sm font-medium text-gray-300">
+          <span className="text-sm font-medium text-[var(--neutral-400)]">
             Connected to <span className="font-bold text-indigo-400">Polygon Amoy Testnet</span>
           </span>
         </div>
-        <div className="text-xs text-gray-400">
+        <div className="text-xs text-[var(--neutral-300)]">
           {nfts.length} NFT{nfts.length !== 1 ? 's' : ''} found
         </div>
       </div>
@@ -375,18 +375,18 @@ export default function NFTDisplay() {
                 <h3 className="text-xl font-bold text-white">
                   {nft.metadata?.name || `NFT #${nft.tokenId}`}
                 </h3>
-                <span className="bg-white/10 text-gray-300 text-xs px-3 py-1 rounded-full font-medium">
+                <span className="bg-white/10 text-[var(--neutral-400)] text-xs px-3 py-1 rounded-full font-medium">
                   #{nft.tokenId}
                 </span>
               </div>
               
               {nft.metadata?.description && (
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-[var(--neutral-400)] mb-4 text-sm leading-relaxed">
                   {nft.metadata.description}
                 </p>
               )}
 
-              <div className="text-xs text-gray-400 mb-4">
+              <div className="text-xs text-[var(--neutral-300)] mb-4">
                 <p className="truncate font-mono bg-white/5 p-3 rounded-lg border border-white/10">
                   <span className="font-semibold">Owner:</span> {nft.owner}
                 </p>
@@ -394,7 +394,7 @@ export default function NFTDisplay() {
 
               {nft.metadata?.attributes && nft.metadata.attributes.length > 0 && (
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-300 mb-2">Attributes:</h4>
+                  <h4 className="text-sm font-semibold text-[var(--neutral-400)] mb-2">Attributes:</h4>
                   <div className="flex flex-wrap gap-2">
                     {nft.metadata.attributes.map((attr, index) => (
                       <span 
@@ -420,7 +420,7 @@ export default function NFTDisplay() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-                <div className="flex items-center space-x-1 text-xs text-gray-400">
+                <div className="flex items-center space-x-1 text-xs text-[var(--neutral-300)]">
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                   </svg>

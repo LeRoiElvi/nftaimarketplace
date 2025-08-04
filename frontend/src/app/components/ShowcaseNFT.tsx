@@ -144,79 +144,83 @@ export default function ShowcaseNFT() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <div className="glass rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300">
-        {nft.metadata?.image && (
-          <div className="aspect-square overflow-hidden relative">
-            <img 
-              src={getImageUrl(nft.metadata.image)} 
-              alt={nft.metadata.name || `NFT #${nft.tokenId}`}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
-            {/* Featured Badge */}
-            <div className="absolute top-4 right-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
-              ✨ Featured
-            </div>
-            {/* Testnet Badge */}
-            <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/30">
-              Amoy Testnet
-            </div>
-          </div>
-        )}
-        
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <h3 className="text-3xl font-bold text-white">
-              {nft.metadata?.name || `NFT #${nft.tokenId}`}
-            </h3>
-            <span className="bg-white/10 text-gray-300 text-sm px-4 py-2 rounded-full font-medium border border-white/20">
-              #{nft.tokenId}
-            </span>
-          </div>
-          
-          {nft.metadata?.description && (
-            <p className="text-gray-300 mb-6 text-base leading-relaxed">
-              {nft.metadata.description}
-            </p>
-          )}
-
-          <div className="text-sm text-gray-400 mb-6">
-            <p className="font-mono bg-white/5 p-4 rounded-xl border border-white/10">
-              <span className="font-semibold text-gray-300">Owner:</span> {nft.owner}
-            </p>
-          </div>
-
-          {nft.metadata?.attributes && nft.metadata.attributes.length > 0 && (
-            <div className="mb-8">
-              <h4 className="text-base font-semibold text-gray-300 mb-4">Attributes:</h4>
-              <div className="flex flex-wrap gap-3">
-                {nft.metadata.attributes.map((attr, index) => (
-                  <span 
-                    key={index}
-                    className="bg-indigo-600/20 text-indigo-300 text-sm px-4 py-2 rounded-full font-medium border border-indigo-500/30"
-                  >
-                    {attr.trait_type}: {attr.value}
-                  </span>
-                ))}
+        <div className="grid md:grid-cols-2 gap-8 p-8">
+          {/* NFT Image - Left Side */}
+          {nft.metadata?.image && (
+            <div className="aspect-square overflow-hidden relative rounded-xl">
+              <img 
+                src={getImageUrl(nft.metadata.image)} 
+                alt={nft.metadata.name || `NFT #${nft.tokenId}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Featured Badge */}
+              <div className="absolute top-4 right-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
+                ✨ Featured
+              </div>
+              {/* Testnet Badge */}
+              <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-semibold border border-white/30">
+                Amoy Testnet
               </div>
             </div>
           )}
+          
+          {/* NFT Metadata - Right Side */}
+          <div className="flex flex-col justify-center">
+            <div className="flex items-start justify-between mb-6">
+              <h3 className="text-3xl font-bold text-white">
+                {nft.metadata?.name || `NFT #${nft.tokenId}`}
+              </h3>
+              <span className="bg-white/10 text-gray-300 text-sm px-4 py-2 rounded-full font-medium border border-white/20">
+                #{nft.tokenId}
+              </span>
+            </div>
+            
+            {nft.metadata?.description && (
+              <p className="text-gray-300 mb-6 text-base leading-relaxed">
+                {nft.metadata.description}
+              </p>
+            )}
 
-          <div className="flex items-center justify-between pt-6 border-t border-white/10">
-            <a 
-              href={`https://amoy.polygonscan.com/token/${CONTRACT_ADDRESS}?a=${nft.tokenId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 text-base font-medium transition-colors bg-indigo-600/10 px-6 py-3 rounded-xl hover:bg-indigo-600/20 border border-indigo-500/30"
-            >
-              <span>View on PolygonScan</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-            <div className="flex items-center space-x-2 text-sm text-gray-400">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span>Live on Testnet</span>
+            <div className="text-sm text-gray-400 mb-6">
+              <p className="font-mono bg-white/5 p-4 rounded-xl border border-white/10">
+                <span className="font-semibold text-gray-300">Owner:</span> {nft.owner}
+              </p>
+            </div>
+
+            {nft.metadata?.attributes && nft.metadata.attributes.length > 0 && (
+              <div className="mb-8">
+                <h4 className="text-base font-semibold text-gray-300 mb-4">Attributes:</h4>
+                <div className="flex flex-wrap gap-3">
+                  {nft.metadata.attributes.map((attr, index) => (
+                    <span 
+                      key={index}
+                      className="bg-indigo-600/20 text-indigo-300 text-sm px-4 py-2 rounded-full font-medium border border-indigo-500/30"
+                    >
+                      {attr.trait_type}: {attr.value}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-white/10 gap-4">
+              <a 
+                href={`https://amoy.polygonscan.com/token/${CONTRACT_ADDRESS}?a=${nft.tokenId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 text-base font-medium transition-colors bg-indigo-600/10 px-6 py-3 rounded-xl hover:bg-indigo-600/20 border border-indigo-500/30"
+              >
+                <span>View on PolygonScan</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <div className="flex items-center space-x-2 text-sm text-gray-400">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>Live on Testnet</span>
+              </div>
             </div>
           </div>
         </div>
