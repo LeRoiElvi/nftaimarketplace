@@ -38,16 +38,16 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         <div className="flex-1">
           <div className="flex items-center space-x-2 mb-2">
             {post.featured && (
-              <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-semibold rounded-full">
+              <span className="px-2 py-1 bg-gradient-to-r from-blue-9 to-blue-7 text-blue-contrast text-xs font-semibold rounded-full">
                 Featured
               </span>
             )}
-            <span className="text-indigo-400 text-sm font-medium">
+            <span className="text-blue-7 text-sm font-medium">
               {formatDate(post.date)}
             </span>
           </div>
           <Link href={`/blog/${post.slug}`}>
-            <h3 className="text-xl font-bold text-white mb-2 hover:text-indigo-300 transition-colors cursor-pointer">
+            <h3 className="text-xl font-bold text-blue-9 mb-2 hover:text-blue-10 transition-colors cursor-pointer">
               {post.title}
             </h3>
           </Link>
@@ -60,10 +60,10 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <span className="text-sm text-[var(--neutral-500)]">
+          <span className="text-sm text-blue-6">
             By {post.author}
           </span>
-          <span className="text-sm text-[var(--neutral-500)]">
+          <span className="text-sm text-blue-6">
             {post.readTime} min read
           </span>
         </div>
@@ -73,13 +73,13 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             {post.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 bg-white/10 text-white text-xs rounded-full"
+                className="px-2 py-1 bg-blue-a2 text-blue-9 text-xs rounded-full"
               >
                 {tag}
               </span>
             ))}
             {post.tags.length > 2 && (
-              <span className="text-xs text-[var(--neutral-500)]">
+              <span className="text-xs text-blue-6">
                 +{post.tags.length - 2} more
               </span>
             )}
@@ -87,10 +87,10 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         )}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-white/10">
+      <div className="mt-4 pt-4 border-t border-blue-a4">
         <Link
           href={`/blog/${post.slug}`}
-          className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors inline-flex items-center space-x-1"
+          className="text-blue-9 hover:text-blue-10 font-medium transition-colors inline-flex items-center space-x-1"
         >
           <span>Read more</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

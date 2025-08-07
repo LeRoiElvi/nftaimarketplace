@@ -57,10 +57,10 @@ export default function BlogList({
   return (
     <section className="mb-24">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-blue-9 mb-4">
           {title}
         </h2>
-        <p className="text-xl text-[var(--neutral-300)] max-w-2xl mx-auto">
+        <p className="text-xl text-blue-7 max-w-2xl mx-auto">
           {subtitle}
         </p>
       </div>
@@ -73,8 +73,8 @@ export default function BlogList({
               onClick={() => setSelectedTag('')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 selectedTag === ''
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white/10 text-[var(--neutral-300)] hover:bg-white/20'
+                  ? 'bg-blue-9 text-blue-contrast'
+                  : 'bg-blue-a2 text-blue-9 hover:bg-blue-a3'
               }`}
             >
               All Posts
@@ -85,8 +85,8 @@ export default function BlogList({
                 onClick={() => handleTagFilter(tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedTag === tag
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-white/10 text-[var(--neutral-300)] hover:bg-white/20'
+                    ? 'bg-blue-9 text-blue-contrast'
+                    : 'bg-blue-a2 text-blue-9 hover:bg-blue-a3'
                 }`}
               >
                 {tag}
@@ -129,7 +129,7 @@ export default function BlogList({
         <div className="text-center mt-12">
           <a
             href="/blog"
-            className="inline-flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
+            className="inline-flex items-center space-x-2 bg-blue-9 hover:bg-blue-10 text-blue-contrast px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
           >
             <span>View All Posts</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

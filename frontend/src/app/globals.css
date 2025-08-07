@@ -1,21 +1,24 @@
 @import "tailwindcss";
+@import "./radix-colors.css";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --accent: #4f46e5;
-  --accent-light: #818cf8;
-  --neutral-50: #fafafa;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
-  --neutral-300: #d4d4d4;
-  --neutral-400: #a1a1a1;
-  --neutral-500: #737373;
-  --neutral-600: #525252;
-  --neutral-700: #404040;
-  --neutral-800: #262626;
-  --neutral-900: #171717;
-  --neutral-950: #0a0a0a;
+  /* Legacy variables for backward compatibility */
+  --background: var(--color-background);
+  --foreground: var(--gray-12);
+  --accent: var(--blue-9);
+  --accent-light: var(--blue-7);
+  --neutral-50: var(--gray-1);
+  --neutral-100: var(--gray-2);
+  --neutral-200: var(--gray-3);
+  --neutral-300: var(--gray-4);
+  --neutral-400: var(--gray-5);
+  --neutral-500: var(--gray-6);
+  --neutral-600: var(--gray-7);
+  --neutral-700: var(--gray-8);
+  --neutral-800: var(--gray-9);
+  --neutral-900: var(--gray-10);
+  --neutral-950: var(--gray-11);
+  --roielvis: var(--blue-9);
 }
 
 @theme inline {
@@ -38,16 +41,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--neutral-900);
+  background: var(--gray-10);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neutral-800);
+  background: var(--gray-9);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--blue-9);
 }
 
 /* Smooth transitions */
@@ -64,7 +67,7 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  background: linear-gradient(135deg, var(--blue-7), var(--blue-9));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -72,19 +75,19 @@ body {
 
 /* Gray gradient utilities */
 .gray-gradient {
-  background: linear-gradient(135deg, var(--neutral-700), var(--neutral-900));
+  background: linear-gradient(135deg, var(--gray-8), var(--gray-10));
 }
 
 .gray-gradient-light {
-  background: linear-gradient(135deg, var(--neutral-300), var(--neutral-600));
+  background: linear-gradient(135deg, var(--gray-4), var(--gray-7));
 }
 
 .gray-gradient-dark {
-  background: linear-gradient(135deg, var(--neutral-800), var(--neutral-950));
+  background: linear-gradient(135deg, var(--gray-9), var(--gray-11));
 }
 
 .gray-gradient-subtle {
-  background: linear-gradient(135deg, var(--neutral-800), var(--neutral-900));
+  background: linear-gradient(135deg, var(--gray-9), var(--gray-10));
 }
 
 /* Animated gray gradient */
@@ -108,7 +111,7 @@ body {
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #4f46e5, #7c3aed, #ec4899, #06b6d4);
+  background: linear-gradient(-45deg, var(--blue-9), var(--blue-7), var(--blue-8), var(--blue-6));
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
