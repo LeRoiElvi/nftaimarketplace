@@ -20,7 +20,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
   return (
     <article 
-      className={`glass rounded-xl p-6 hover:bg-white/10 transition-all duration-300 group ${
+      className={`glass rounded-xl p-6 hover:bg-gray-a3 transition-all duration-300 group ${
         featured ? 'md:col-span-2 lg:col-span-1' : ''
       }`}
     >
@@ -54,7 +54,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
       </div>
 
-      <p className="text-[var(--neutral-400)] mb-4 leading-relaxed">
+      <p className="text-blue-7 mb-4 leading-relaxed">
         {post.excerpt}
       </p>
 

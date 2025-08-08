@@ -2,22 +2,26 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getBlogPost, getBlogSlugs } from '../../lib/blog';
+import ThemeToggle from '../../components/ThemeToggle';
 
 // Custom MDX components
+type WithChildren = { children: React.ReactNode };
+type AnchorProps = { children: React.ReactNode; href?: string };
+
 const mdxComponents = {
-  h1: ({ children }: any) => (
+  h1: ({ children }: WithChildren) => (
     <h1 className="text-4xl font-bold text-blue-9 mb-6 mt-8 first:mt-0">{children}</h1>
   ),
-  h2: ({ children }: any) => (
+  h2: ({ children }: WithChildren) => (
     <h2 className="text-3xl font-bold text-blue-9 mb-4 mt-8">{children}</h2>
   ),
-  h3: ({ children }: any) => (
+  h3: ({ children }: WithChildren) => (
     <h3 className="text-2xl font-bold text-blue-8 mb-3 mt-6">{children}</h3>
   ),
-  p: ({ children }: any) => (
+  p: ({ children }: WithChildren) => (
     <p className="text-blue-7 mb-4 leading-relaxed">{children}</p>
   ),
-  a: ({ children, href }: any) => (
+  a: ({ children, href }: AnchorProps) => (
     <a 
       href={href} 
       className="text-blue-9 hover:text-blue-10 transition-colors underline"
@@ -27,28 +31,28 @@ const mdxComponents = {
       {children}
     </a>
   ),
-  ul: ({ children }: any) => (
+  ul: ({ children }: WithChildren) => (
     <ul className="list-disc list-inside text-blue-7 mb-4 space-y-2">{children}</ul>
   ),
-  ol: ({ children }: any) => (
+  ol: ({ children }: WithChildren) => (
     <ol className="list-decimal list-inside text-blue-7 mb-4 space-y-2">{children}</ol>
   ),
-  li: ({ children }: any) => (
+  li: ({ children }: WithChildren) => (
     <li className="ml-4">{children}</li>
   ),
-  blockquote: ({ children }: any) => (
+  blockquote: ({ children }: WithChildren) => (
     <blockquote className="border-l-4 border-blue-9 pl-4 py-2 my-4 bg-blue-a1 rounded-r-lg">
       <div className="text-blue-7 italic">{children}</div>
     </blockquote>
   ),
-  code: ({ children }: any) => (
+  code: ({ children }: WithChildren) => (
     <code className="px-2 py-1 bg-blue-a2 rounded text-blue-9 text-sm font-mono">
       {children}
     </code>
   ),
-  pre: ({ children }: any) => (
-    <pre className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4 border border-white/10">
-      <code className="text-green-400 font-mono text-sm">{children}</code>
+  pre: ({ children }: WithChildren) => (
+    <pre className="bg-gray-12 rounded-lg p-4 overflow-x-auto mb-4 border border-gray-1/10">
+      <code className="text-gray-1 font-mono text-sm">{children}</code>
     </pre>
   ),
 };
@@ -115,6 +119,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <Link href="/#nfts" className="text-blue-7 hover:text-blue-9 transition-colors font-medium">My NFTs</Link>
               <Link href="/#about" className="text-blue-7 hover:text-blue-9 transition-colors font-medium">Let&apos;s Connect</Link>
               <Link href="/blog" className="text-blue-7 hover:text-blue-9 transition-colors font-medium">My Story</Link>
+              <ThemeToggle />
             </div>
           </div>
         </div>

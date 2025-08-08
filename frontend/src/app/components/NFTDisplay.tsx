@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
 import { connectContract } from '../utils/connectContract';
 
 interface NFTMetadata {
@@ -48,17 +47,19 @@ export default function NFTDisplay() {
   async function checkWalletConnection() {
     if (typeof window.ethereum !== 'undefined') {
       try {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        setWalletConnected(accounts.length > 0);
+        const accounts = (await window.ethereum.request({ method: 'eth_accounts' })) as string[];
+        setWalletConnected(Array.isArray(accounts) && accounts.length > 0);
         
         if (accounts.length > 0) {
           await checkNetwork();
         }
         
         // Listen for account changes
-        window.ethereum.on('accountsChanged', (accounts: string[]) => {
-          setWalletConnected(accounts.length > 0);
-          if (accounts.length > 0) {
+        window.ethereum.on('accountsChanged', (...args: unknown[]) => {
+          const firstArg = args[0];
+          const accountList = Array.isArray(firstArg) ? (firstArg as string[]) : [];
+          setWalletConnected(accountList.length > 0);
+          if (accountList.length > 0) {
             checkNetwork();
           } else {
             setNfts([]);
@@ -82,7 +83,11 @@ export default function NFTDisplay() {
 
   async function checkNetwork() {
     try {
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      if (!window.ethereum) {
+        setIsCorrectNetwork(false);
+        return;
+      }
+      const chainId = (await window.ethereum.request({ method: 'eth_chainId' })) as string;
       console.log('Current chain ID:', chainId);
       console.log('Expected Amoy chain ID:', AMOY_CHAIN_ID);
       const isAmoy = chainId === AMOY_CHAIN_ID;
@@ -102,17 +107,19 @@ export default function NFTDisplay() {
 
   async function switchToAmoyNetwork() {
     try {
+      if (!window.ethereum) return;
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: AMOY_CHAIN_ID }],
       });
       // Check network after successful switch
       setTimeout(() => checkNetwork(), 1000);
-    } catch (switchError: any) {
+    } catch (switchError: unknown) {
       console.error('Switch error:', switchError);
       // This error code indicates that the chain has not been added to MetaMask.
-      if (switchError.code === 4902) {
+      if ((switchError as { code?: number }).code === 4902) {
         try {
+          if (!window.ethereum) return;
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [AMOY_NETWORK_CONFIG],
@@ -137,14 +144,14 @@ export default function NFTDisplay() {
     }
     
     try {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const accounts = (await window.ethereum.request({ method: 'eth_requestAccounts' })) as string[];
       console.log('Connected accounts:', accounts);
-      setWalletConnected(accounts.length > 0);
+      setWalletConnected(Array.isArray(accounts) && accounts.length > 0);
       setError(null);
       await checkNetwork();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error connecting wallet:', error);
-      if (error.code === 4001) {
+      if ((error as { code?: number }).code === 4001) {
         setError('Please connect to MetaMask to continue.');
       } else {
         setError('Failed to connect wallet. Please try again.');
@@ -202,10 +209,13 @@ export default function NFTDisplay() {
           }
 
           nftList.push(nft);
-        } catch (tokenError: any) {
+        } catch (tokenError: unknown) {
           console.log(`Error loading token ${tokenId}:`, tokenError);
           // If it's a "nonexistent token" error, continue to next token
-          if (tokenError.reason && tokenError.reason.includes('nonexistent')) {
+          if (
+            (tokenError as { reason?: string }).reason &&
+            (tokenError as { reason?: string }).reason!.includes('nonexistent')
+          ) {
             console.log(`Token ${tokenId} does not exist, continuing...`);
             continue;
           }
@@ -217,7 +227,7 @@ export default function NFTDisplay() {
 
       setNfts(nftList);
       setError(null);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error loading NFTs:", err);
       setError("Failed to load NFTs");
     } finally {
@@ -261,19 +271,19 @@ export default function NFTDisplay() {
     return (
       <div className="text-center py-12 bg-blue-a1">
         <div className="mb-8">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-9 to-blue-7 flex items-center justify-center">
+            <svg className="w-10 h-10 text-blue-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.664-.833-2.464 0L4.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-white mb-3">Wrong Network</h3>
+          <h3 className="text-2xl font-bold text-blue-contrast mb-3">Wrong Network</h3>
           <p className="text-blue-7 mb-8 max-w-md mx-auto">
             Please switch to <span className="font-semibold text-blue-9">Polygon Amoy Testnet</span> to view your NFTs
           </p>
         </div>
         <button
           onClick={switchToAmoyNetwork}
-          className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-flex items-center space-x-2"
+          className="bg-blue-9 hover:bg-blue-10 text-blue-contrast px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 inline-flex items-center space-x-2"
         >
           <span>Switch to Amoy Testnet</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -342,7 +352,7 @@ export default function NFTDisplay() {
       {/* Network Status Banner */}
       <div className="glass rounded-xl p-4 flex items-center justify-between bg-blue-a2">
         <div className="flex items-center space-x-3">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-blue-9 rounded-full animate-pulse"></div>
           <span className="text-sm font-medium text-blue-7">
             Connected to <span className="font-bold text-blue-9">Polygon Amoy Testnet</span>
           </span>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import BlogCard from './BlogCard';
 import { BlogPost } from '../lib/blog';
 
@@ -110,11 +111,11 @@ export default function BlogList({
       ) : (
         <div className="text-center py-12">
           <div className="glass rounded-xl p-8">
-            <svg className="w-16 h-16 text-[var(--neutral-500)] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-16 h-16 text-blue-6 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <h3 className="text-xl font-bold text-white mb-2">No posts found</h3>
-            <p className="text-[var(--neutral-400)]">
+            <h3 className="text-xl font-bold text-blue-9 mb-2">No posts found</h3>
+            <p className="text-blue-7">
               {selectedTag 
                 ? `No posts found with the tag "${selectedTag}". Try selecting a different tag or view all posts.`
                 : "No blog posts available yet. Check back soon for new content!"
@@ -127,7 +128,7 @@ export default function BlogList({
       {/* Load More / View All */}
       {limit && posts.length > limit && (
         <div className="text-center mt-12">
-          <a
+          <Link
             href="/blog"
             className="inline-flex items-center space-x-2 bg-blue-9 hover:bg-blue-10 text-blue-contrast px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
           >
@@ -135,7 +136,7 @@ export default function BlogList({
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       )}
     </section>

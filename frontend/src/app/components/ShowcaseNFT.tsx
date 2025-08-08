@@ -84,9 +84,10 @@ export default function ShowcaseNFT() {
 
       setNft(nftData);
       setError(null);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error loading showcase NFT:", err);
-      setError(`Failed to load NFT: ${err.message || 'Unknown error'}`);
+      const msg = (err as { message?: string })?.message ?? 'Unknown error';
+      setError(`Failed to load NFT: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -213,7 +214,7 @@ export default function ShowcaseNFT() {
                 </svg>
               </a>
               <div className="flex items-center space-x-2 text-sm text-blue-7">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-blue-9 rounded-full animate-pulse"></div>
                 <span>Live on Testnet</span>
               </div>
             </div>

@@ -9,11 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Legacy colors for backward compatibility
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        roielvis: 'var(--roielvis)',
-        
+        // Radix UI colors
         // Radix UI Blue Scale
         blue: {
           1: 'var(--blue-1)',

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAllBlogPosts, BlogPost } from '../../lib/blog';
+import { getAllBlogPosts, BlogPost } from '@/app/lib/blog';
 
 export default async function handler(
   req: NextApiRequest,
