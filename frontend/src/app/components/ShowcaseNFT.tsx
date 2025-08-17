@@ -102,28 +102,28 @@ export default function ShowcaseNFT() {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center py-12 bg-blue-a1">
+      <div className="flex flex-col justify-center items-center py-12 bg-gray-2 rounded-xl">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-9 mb-4"></div>
-        <p className="text-blue-7">Loading featured NFT...</p>
+        <p className="text-gray-10">Loading featured NFT...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center py-12 bg-blue-a1">
+      <div className="text-center py-12 bg-gray-2 rounded-xl">
         <div className="mb-6">
           <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-9 to-blue-7 flex items-center justify-center">
-            <svg className="w-8 h-8 text-blue-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 className="text-xl font-bold text-blue-9 mb-2">Error Loading Featured NFT</h3>
-          <p className="text-blue-7 mb-6">{error}</p>
+          <h3 className="text-xl font-bold text-gray-12 mb-2">Error Loading Featured NFT</h3>
+          <p className="text-gray-10 mb-6">{error}</p>
         </div>
         <button 
           onClick={loadNFT}
-          className="bg-blue-9 hover:bg-blue-10 text-blue-contrast px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+          className="bg-blue-9 hover:bg-blue-10 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
         >
           Try Again
         </button>
@@ -133,20 +133,20 @@ export default function ShowcaseNFT() {
 
   if (!nft) {
     return (
-      <div className="text-center py-12 bg-blue-a1">
-        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-a2 flex items-center justify-center">
-          <svg className="w-8 h-8 text-blue-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="text-center py-12 bg-gray-2 rounded-xl">
+        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gray-3 flex items-center justify-center">
+          <svg className="w-8 h-8 text-gray-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
           </svg>
         </div>
-        <p className="text-blue-7">NFT not found</p>
+        <p className="text-gray-10">NFT not found</p>
       </div>
     );
   }
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="glass rounded-2xl overflow-hidden hover:bg-blue-a2 transition-all duration-300 bg-blue-a1">
+      <div className="rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 bg-gray-2 border border-gray-6">
         <div className="grid md:grid-cols-2 gap-8 p-8">
           {/* NFT Image - Left Side */}
           {nft.metadata?.image && (
@@ -157,11 +157,11 @@ export default function ShowcaseNFT() {
                 className="w-full h-full object-cover"
               />
               {/* Featured Badge */}
-              <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-9 to-blue-7 text-blue-contrast text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
+              <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-9 to-blue-10 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
                 ✨ Featured
               </div>
               {/* Testnet Badge */}
-              <div className="absolute top-4 left-4 bg-blue-a2 backdrop-blur-sm text-blue-contrast text-xs px-3 py-1 rounded-full font-semibold border border-blue-a4">
+              <div className="absolute top-4 left-4 bg-gray-1/90 backdrop-blur-sm text-gray-12 text-xs px-3 py-1 rounded-full font-semibold border border-gray-6">
                 Amoy Testnet
               </div>
             </div>
@@ -169,51 +169,52 @@ export default function ShowcaseNFT() {
           {/* NFT Metadata - Right Side */}
           <div className="flex flex-col justify-center">
             <div className="flex items-start justify-between mb-6">
-              <h3 className="text-3xl font-bold text-blue-9">
+              <h3 className="text-3xl font-bold text-gray-12">
                 {nft.metadata?.name || `NFT #${nft.tokenId}`}
               </h3>
-              <span className="bg-blue-a2 text-blue-9 text-sm px-4 py-2 rounded-full font-medium border border-blue-a4">
+              <span className="bg-gray-3 text-gray-11 text-sm px-4 py-2 rounded-full font-medium border border-gray-6">
                 #{nft.tokenId}
               </span>
             </div>
             {nft.metadata?.description && (
-              <p className="text-blue-7 mb-6 text-base leading-relaxed">
+              <p className="text-gray-10 mb-6 text-base leading-relaxed">
                 {nft.metadata.description}
               </p>
             )}
-            <div className="text-sm text-blue-6 mb-6">
-              <p className="font-mono bg-blue-a1 p-4 rounded-xl border border-blue-a2">
-                <span className="font-semibold text-blue-9">Owner:</span> {nft.owner}
-              </p>
+            <div className="text-sm text-gray-11 mb-6">
+              <div className="font-mono bg-gray-3 p-4 rounded-xl border border-gray-6">
+                <span className="font-semibold text-blue-9">Owner:</span>
+                <p className="text-gray-10 mt-1 break-all">{nft.owner}</p>
+              </div>
             </div>
             {nft.metadata?.attributes && nft.metadata.attributes.length > 0 && (
               <div className="mb-8">
-                <h4 className="text-base font-semibold text-blue-8 mb-4">Attributes:</h4>
+                <h4 className="text-base font-semibold text-gray-12 mb-4">Attributes:</h4>
                 <div className="flex flex-wrap gap-3">
                   {nft.metadata.attributes.map((attr, index) => (
                     <span 
                       key={index}
-                      className="bg-blue-a2 text-blue-9 text-sm px-4 py-2 rounded-full font-medium border border-blue-a4"
+                      className="bg-blue-3 text-blue-11 text-sm px-4 py-2 rounded-full font-medium border border-blue-6"
                     >
-                      {attr.trait_type}: {attr.value}
+                      <span className="text-blue-10">{attr.trait_type}:</span> {attr.value}
                     </span>
                   ))}
                 </div>
               </div>
             )}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-blue-a4 gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-gray-6 gap-4">
               <a 
                 href={`https://amoy.polygonscan.com/token/${CONTRACT_ADDRESS}?a=${nft.tokenId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-blue-9 hover:text-blue-10 text-base font-medium transition-colors bg-blue-a2 px-6 py-3 rounded-xl hover:bg-blue-a3 border border-blue-a4"
+                className="flex items-center space-x-2 text-white font-medium transition-all bg-blue-9 hover:bg-blue-10 px-6 py-3 rounded-xl"
               >
                 <span>View on PolygonScan</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
-              <div className="flex items-center space-x-2 text-sm text-blue-7">
+              <div className="flex items-center space-x-2 text-sm text-gray-10">
                 <div className="w-2 h-2 bg-blue-9 rounded-full animate-pulse"></div>
                 <span>Live on Testnet</span>
               </div>
