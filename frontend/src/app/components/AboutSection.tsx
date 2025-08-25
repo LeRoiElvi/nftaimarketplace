@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
                 ].map((skill) => (
                   <span 
                     key={skill}
-                    className="px-4 py-2 bg-blue-6 text-blue-12 rounded-lg text-sm font-medium border border-blue-7"
+                    className="px-4 py-2 bg-blue-6 text-blue-12 rounded-lg text-sm font-medium border border-blue-7 hover:bg-blue-7 transition-colors"
                   >
                     {skill}
                   </span>
@@ -55,13 +55,13 @@ const AboutSection: React.FC = () => {
               
               {/* Social Links - Featured */}
               <div className="pt-4">
-                <SocialLinks variant="large" showLabels={false} />
+                <SocialLinks />
               </div>
               
               {/* Primary CTA */}
               <div className="pt-6">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:elvis@example.com"
                   className="inline-flex items-center space-x-2 px-8 py-4 bg-blue-9 hover:bg-blue-10 text-blue-contrast rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-blue-9/25"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

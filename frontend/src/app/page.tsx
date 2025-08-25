@@ -3,40 +3,16 @@ import BlogList from './components/BlogList';
 import ThemeToggle from './components/ThemeToggle';
 import { getRecentBlogPosts } from './lib/blog';
 import Footer from './components/Footer';
+import NavigationBar from './components/NavigationBar';
+import Link from 'next/link';
+
 
 export default async function Home() {
   const recentPosts = await getRecentBlogPosts(3);
   return (
 <div className="min-h-screen">
-      {/* Navigation - Much more blue personality */}
-<nav className="fixed top-0 w-full z-50 bg-gray-1/95 backdrop-blur-xl border-b border-gray-6">
-  <div className="max-w-7xl mx-auto px-6">
-    <div className="flex items-center justify-between h-16">
-      <div className="flex items-center space-x-3">
-        <div className="relative">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-4 to-blue-6 p-1 shadow-lg">
-            <img 
-              src="/bblogo.png" 
-              alt="LeRoiElvi Logo" 
-              className="w-full h-full rounded-lg object-cover"
-            />
-          </div>
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-blue-11 to-blue-12 rounded-full border-2 border-blue-9 shadow-sm animate-pulse"></div>
-        </div>
-        <div>
-          <span className="text-gray-12 font-bold text-lg">BoosterB</span>
-          <span className="text-gray-11 text-sm block leading-none">ElvisB projects</span>
-        </div>
-      </div>
-      <div className="hidden md:flex items-center space-x-4">
-        <a href="#nfts" className="text-gray-11 hover:text-gray-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">My NFTs</a>
-        <a href="#about" className="text-gray-11 hover:text-gray-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Let&apos;s Connect</a>
-        <a href="#blog" className="text-gray-11 hover:text-gray-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">My Story</a>
-        <ThemeToggle />
-      </div>
-    </div>
-  </div>
-</nav>
+
+<NavigationBar variant="homepage" />
 
       {/* Hero Section - Bold blue elements */}
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">

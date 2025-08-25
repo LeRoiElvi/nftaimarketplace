@@ -3,45 +3,15 @@ import BlogList from '../components/BlogList';
 import ThemeToggle from '../components/ThemeToggle';
 import { getAllBlogPosts } from '../lib/blog';
 import Footer from '../components/Footer';
+import NavigationBar from '../components/NavigationBar';
 
 export default async function BlogPage() {
   const posts = await getAllBlogPosts();
 
   return (
     <div className="min-h-screen">
-      {/* Navigation - Consistent with home page */}
-      <nav className="fixed top-0 w-full z-50 bg-gray-1/95 backdrop-blur-xl border-b border-gray-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-4 to-blue-6 p-1 shadow-lg">
-                  <Link href="/">
-                    <img 
-                      src="/bblogo.png" 
-                      alt="LeRoiElvi Logo" 
-                      className="w-full h-full rounded-lg object-cover cursor-pointer"
-                    />
-                  </Link>
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-blue-11 to-blue-12 rounded-full border-2 border-blue-9 shadow-sm animate-pulse"></div>
-              </div>
-              <div>
-                <Link href="/" className="cursor-pointer">
-                  <span className="text-gray-12 font-bold text-lg">BoosterB</span>
-                  <span className="text-gray-11 text-sm block leading-none">ElvisB projects</span>
-                </Link>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <Link href="/#nfts" className="text-gray-11 hover:text-gray-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">My NFTs</Link>
-              <Link href="/#about" className="text-gray-11 hover:text-gray-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">Let&apos;s Connect</Link>
-              <Link href="/blog" className="text-blue-11 hover:text-blue-12 hover:bg-blue-8/20 px-4 py-2 rounded-lg transition-all duration-200 font-medium">My Story</Link>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </nav>
+     
+     <NavigationBar variant="blog" />
 
       {/* Hero Section - Consistent with home page style */}
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">
