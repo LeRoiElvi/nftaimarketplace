@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors - Luxury Deep Blue */
+  --primary: #272FA7;
+  --primary-light: #3A42C8;
+  --primary-dark: #1B2380;
+
+  /* Background Colors - Dark/Black Tones */
+  --background: #0a0a0a;
+  --background-secondary: #141414;
+  --background-tertiary: #1f1f1f;
+
+  /* Text Colors - Light for Contrast */
+  --foreground: #ededed;
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4b4;
+  --text-muted: #737373;
+
+  /* Accent Colors - For Hover States */
+  --accent: #4A52E0;
+  --accent-hover: #5A62F0;
+  --accent-light: #6B73FF;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Primary Colors */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Background Colors */
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+
+  /* Text Colors */
+  --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Accent Colors */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+
+  /* Fonts */
+  --font-sans: var(--font-ysabeau);
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ysabeau), sans-serif;
 }
